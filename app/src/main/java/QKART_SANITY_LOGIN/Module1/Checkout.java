@@ -38,7 +38,10 @@ public class Checkout {
             adressInput.sendKeys(addresString);
             WebElement addButton = driver.findElement(By.xpath("//button[text()='Add']"));
             addButton.click();
-            Thread.sleep(3000);
+            // Thread.sleep(3000);
+            WebDriverWait webDriverWait = new WebDriverWait(driver, 3);
+            webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='address-item not-selected MuiBox-root css-0']/div[1]/p")));
+
             return true;
         } catch (Exception e) {
             System.out.println("Exception occurred while entering address: " + e.getMessage());
